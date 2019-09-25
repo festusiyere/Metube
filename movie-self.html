@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MeTube</title>
+  <meta name="description" content="MeTube: A movie application for searching for your favourite movies" />
+  <meta name="keywords" content="movie, tv, shows, film, actors, actress" />
+  <meta name="author" content="Juhla" />
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Fira+Sans|Josefin+Sans|Lato|Manjari|Merriweather+Sans|Nunito|Roboto+Mono|Slabo+27px|Source+Sans+Pro|Ubuntu|Ubuntu+Condensed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Barlow|Cairo|Comfortaa|Crimson+Text|Hind|Josefin+Sans|Karla|Lexend+Giga|Noto+Sans+TC|Patua+One|Signika|Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Barlow|Chilanka|Lexend+Deca|Viga&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/all.css" />
+  <link rel="stylesheet" href="css/slick.css" />
+  <link rel="stylesheet" href="css/slick-theme.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://use.fontawesome.com/13bd0ce7c0.js"></script>
+  <script src="js/all.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/slick.js"></script>
+</head>
+<body>
+  <div class="body">
+    <nav>
+      <header>
+        <a href="index.html" class="hqq">
+          <img src="metube.png" width="60px" alt="">
+          <div class="">
+              <span>Me</span><span>Tube</span>
+          </div>
+        </a>
+      </header>
+      <div class="side-bar">
+        <ul>
+          <li><a href="index.html" class="sidebar"><i class="fas fa-film fa-sm"></i></i>Trending</a></li>
+          <li><a href="movies.html" class="sidebar active"><i class="fas fa-video fa-sm"></i></i>Movies</a></li>
+          <li><a href="tvshows.html" class="sidebar"><i class="fas fa-tv fa-sm"></i>TV Shows</a></li>
+          <li><a href="people.html" class="sidebar"><i class="fas fa-users fa-sm"></i>People</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="content" style="">
+      <div class="container">
+        <header class="top-bar">
+          <a href="" id="goback">
+            <div class="search">
+              <div class="search-icon">
+                <i class="fas fa-arrow-left"></i>
+              </div>
+            </div>
+          </a>
+          <div id="time" class="time">
+          </div>
+          <div class="battery-box">
+              <strong class="battery-percentage"></strong>
+              <i class="battery"></i>
+          </div>
+        </header>
+        <div class="" style="" >
+          <div class="movie">
+            <div class="movie-pic1">
+              <div class="movie-wrap" id="">
+                <div class="contentloader">
+                  <img src="img/loader2.gif" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="movie-det">
+              <div class="mt">
+                <div class="mt1">
+                  <div class="movie-wrap" id="">
+                    <div class="contentloader">
+                      <img src="img/loader2.gif" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="mt2">
+                  <div class="mt2a">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt2a">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt2a">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt2a">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt3">
+                  <div class="mt4">
+                    THE CAST
+                  </div>
+                  <div class="mt5">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt6">
+                  <div class="mt6a">
+                    Synopsis
+                  </div>
+                  <div class="mt6b">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt7">
+                  <div class="mt7a">
+                    PICTURES
+                  </div>
+                  <div class="mt7b">
+                    <div class="movie-wrap" id="">
+                      <div class="contentloader">
+                        <img src="img/loader2.gif" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt7">
+            <div class="mt7a">
+              RECOMMENDED
+            </div>
+            <div class="rc">
+              <div class="movie-wrap" id="">
+                <div class="contentloader">
+                  <img src="img/loader2.gif" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="toggler">
+    <a href="" id="toggler">
+      Menu
+    </a>
+  </div>
+  <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/slick.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/movie-self.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MeTube</title>
+  <meta name="description" content="MeTube: A movie application for searching for your favourite movies" />
+  <meta name="keywords" content="movie, tv, shows, film, actors, actress" />
+  <meta name="author" content="Juhla" />
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Fira+Sans|Josefin+Sans|Lato|Manjari|Merriweather+Sans|Nunito|Roboto+Mono|Slabo+27px|Source+Sans+Pro|Ubuntu|Ubuntu+Condensed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Barlow|Cairo|Comfortaa|Crimson+Text|Hind|Josefin+Sans|Karla|Lexend+Giga|Noto+Sans+TC|Patua+One|Signika|Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Barlow|Chilanka|Lexend+Deca|Viga&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/all.css" />
+  <link rel="stylesheet" href="css/slick.css" />
+  <link rel="stylesheet" href="css/slick-theme.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/all.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/slick.js"></script>
+</head>
+<body>
+  <div class="body">
+    <nav>
+      <header>
+        <a href="index.html" class="hqq">
+          <img src="metube.png" width="60px" alt="">
+          <div class="">
+              <span>Me</span><span>Tube</span>
+          </div>
+        </a>
+      </header>
+      <div class="side-bar">
+        <ul>
+          <li><a href="index.html" class="sidebar"><i class="fas fa-film fa-sm"></i></i>Trending</a></li>
+          <li><a href="movies.html" class="sidebar"><i class="fas fa-video fa-sm"></i></i>Movies</a></li>
+          <li><a href="tvshows.html" class="sidebar"><i class="fas fa-tv fa-sm"></i>TV Shows</a></li>
+          <li><a href="people.html" class="sidebar active"><i class="fas fa-users fa-sm"></i>People</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="content" style="">
+      <div class="container">
+        <header class="top-bar">
+          <a href="" id="openform" title="Search People">
+            <div class="search">
+              <div class="search-icon">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </a>
+          <div id="time" class="time">
+          </div>
+          <div class="battery-box">
+              <strong class="battery-percentage"></strong>
+              <i class="battery"></i>
+          </div>
+        </header>
+        <div class="form-wrap">
+          <form class="header-form" action="" method="post">
+          <input type="text" name="" value="" placeholder="Search People" id="search-input">
+          <a href="#" id="inline-search" type="submit">
+            <div class="search">
+              <div class="search-icon">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </a>
+        </form>
+        </div>
+        <div class="" style="" >
+          <div class="trending query">
+            <form class="" action="" method="get">
+              <div class="query-form">
+                <div class="input">
+                  Filter
+                  <select class="" name="">
+                    <option value=""></option>
+                    <option value="popular">Popular</option>
+                    <option value="latest">Latest</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        <div class="movie-cards">
+          <div class="movie-card">
+            <a href="tv-self.html">
+              <div class="movie-poster">
+                <img src="images/aa2.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="movie-self.html">
+              <div class="movie-poster">
+                <img src="images/ay.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="tv-self.html">
+              <div class="movie-poster">
+                <img src="images/aa2.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="movie-self.html">
+              <div class="movie-poster">
+                <img src="images/ay.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="tv-self.html">
+              <div class="movie-poster">
+                <img src="images/aa2.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="movie-self.html">
+              <div class="movie-poster">
+                <img src="images/ay.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="tv-self.html">
+              <div class="movie-poster">
+                <img src="images/aaj.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+          <div class="movie-card">
+            <a href="movie-self.html">
+              <div class="movie-poster">
+                <img src="images/au8.jpg" class="" alt="">
+              </div>
+              <div class="this-title">
+                THIS IS IT
+                PART 2
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toggler">
+    <a href="" id="toggler">
+      Menu
+    </a>
+  </div>
+  <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/slick.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/tvshows.js"></script>
+
+</body>
+</html>
