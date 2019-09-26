@@ -396,6 +396,18 @@ color: orange;
 	margin-top: -1em;
 	color: var(--Purple);
 }
+.result{
+	width: 100%;
+  font-size: 1.1em;
+  margin: 0.2em auto;
+  margin-bottom: 1em;
+  margin-top: -1em;
+  color: #000;
+  text-align: left;
+	}
+	.result span{
+		color: var(--Purple);
+	}
 .error{
 	width: 100%;
 	display: flex;
@@ -488,11 +500,16 @@ color: orange;
 .mt-play svg{
 	font-size: 2rem;
 	color: #fff;
+	transition: 1s;
 }
 .mt-play:active svg{
 	font-size: 2rem;
 	color: #fff;
-	border: 2px dotted 1px;
+	border: white dotted 1px;
+}
+.mt-play:hover svg{
+	font-size: 2rem;
+	color: var(--Ash);
 }
 .mt{
 	margin-left: 4rem;
@@ -692,7 +709,7 @@ color: orange;
 	background-color: var(--LightPurple);
 	overflow: hidden;
 	padding: 0.5rem;
-	transition: all 2s;
+	transition: all 1s;
 	box-sizing: border-box;
 }
 .movie-poster{
@@ -707,22 +724,14 @@ color: orange;
 	color: #000;
 }
 .movie-card:hover{
-	transform: scale(1.01);
-	animation: rotate 1.5s;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-timing-function: linear;
+	transform: scale(1.03);
+	background-color: #000;
 }
 /* Safari 4.0 - 8.0 */
-@-webkit-keyframes rotate {
-	from { transform: rotate(5deg)}
-	to { transform: rotate(-5deg)}
+.movie-card:hover .this-title{
+	color: #fff;
+}
 
-}
-@keyframes rotate {
-	from { transform: rotate(5deg)}
-	to { transform: rotate(-5deg)}
-}
 .open-nav{
 	display: flex;
 	position: fixed;
@@ -746,6 +755,42 @@ color: orange;
 	margin: .5rem auto;
 }
 .showmore button:hover{
+	background-color: var(--Ash);
+	transform: scale(0.97);
+}
+.showmore1{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.showmore1 button{
+	background-color: var(--LightPink);
+	font-weight: bold;
+	color: #fff;
+	border: none;
+	padding: 1em 4em;
+	cursor: pointer;
+	margin: .5rem auto;
+}
+.showmore1 button:hover{
+	background-color: var(--Ash);
+	transform: scale(0.97);
+}
+.showmore2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.showmore2 button{
+	background-color: var(--Blue);
+	font-weight: bold;
+	color: #fff;
+	border: none;
+	padding: 1em 4em;
+	cursor: pointer;
+	margin: .5rem auto;
+}
+.showmore2 button:hover{
 	background-color: var(--Ash);
 	transform: scale(0.97);
 }
@@ -865,9 +910,7 @@ color: orange;
 	.people{
 		display: none;
 	}
-	.trending{
-		/* border: solid red 2px; */
-	}
+
 	.content{
 	  margin: 0 0 0 0;
 		max-width: 100vw;

@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", (e) => {
   var movieId = sessionStorage.getItem('movieId');
+  getVideo();
   getMoviesById();
   getMovieDetails();
   getRecommendation();
 
+  var videoId;
   document.querySelector("#goback").addEventListener("click", back);
 
   function back(e){
     e.preventDefault();
-    console.log(this);
+
     window.history.go(-1);
   }
 
@@ -156,7 +158,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
      let html = movies.map(film => {
        let link = "https://image.tmdb.org/t/p/original";
      return `
-       <div class="mt7ba">
+       <div class="mt7ba" id="mt7ba">
          <a href="${link + film.file_path}" target="_blank">
            <img src="${link + film.file_path}" alt="">
          </a>
@@ -165,6 +167,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
    }).join(" ");
    let me = document.querySelector('.mt7b');
    me.innerHTML = html;
+
+   $(".mt7ba").lightGallery();
+
    })
    .catch((err) => {
      let thisDiv = document.querySelector(".mt7b");
@@ -236,12 +241,13 @@ document.addEventListener("DOMContentLoaded", (e) => {
       .then((response) => {
         let movies = response.data;
         let link = "https://image.tmdb.org/t/p/original";
+        let youtube = "https://www.youtube.com/watch?v=";
         let html =`
         <div class="moviecov">
             <a href="${link+movies.poster_path}" target="_blank">
               <img class="image-fill" src="${link+movies.poster_path}" alt="">
             </a>
-            <a href="">
+            <a href="${youtube+videoId}">
               <div class="mt-play">
                 <i class="fas fa-play"></i>
               </div>
@@ -251,6 +257,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         let thisDiv = document.querySelector(".movie-pic1");
         let thatDiv = document.querySelectorAll("#loaderq");
         thisDiv.innerHTML = html;
+        $(".moviecov").lightGallery();
       })
       .catch((err) => {
         let thisDiv = document.querySelector(".movie-pic1");
@@ -264,88 +271,23 @@ document.addEventListener("DOMContentLoaded", (e) => {
         thisDiv.innerHTML = customError;
       });
   }
-
-  function getCast() {
-    let castArray = [];
-    axios.get('https://api.themoviedb.org/3/movie/'+movieId+'/credits?api_key=34ecbb288e9e94b508722abfc2597766&language=en-US')
+  /*  THIS IS FOR GETTING VIDEO ID */
+  function getVideo() {
+    axios.get('https://api.themoviedb.org/3/movie/'+movieId+'/videos?api_key=34ecbb288e9e94b508722abfc2597766')
       .then((response) => {
-        let movies = response.data;
-        let link = "https://image.tmdb.org/t/p/original";
-        let html =`
-        <div class="moviecov">
-            <a href="${link+movies.poster_path}" target="_blank">
-              <img class="image-fill" src="${link+movies.poster_path}" alt="">
-            </a>
-            <a href="">
-              <div class="mt-play">
-                <i class="fas fa-play"></i>
-              </div>
-            </a>
-          </div>
-          `;
-        let thisDiv = document.querySelector(".movie-pic1");
-        let thatDiv = document.querySelectorAll("#loaderq");
-        thisDiv.innerHTML = html;
+        let movies = response.data.results;
+        let html =  movies.filter( a => {
+            if (a.type === "Trailer"){
+              return true;
+            }
+          }
+        );
+        videoId = html[0].key;
       })
       .catch((err) => {
-        let thisDiv = document.querySelector(".movie-pic1");
-        let customError = `
-            <div class="movie-wrap">
-              <div class="error">
-                <img src="img/error.png" class="" alt="">
-              </div>
-            </div>
-        `;
-        thisDiv.innerHTML = customError;
+        console.log(err);
       });
-  }
-
-  // let img = document.querySelectorAll('.rc1');
-  // console.log(img);
-  // img.forEach(a => a.addEventListener("mouseover", hoverIn));
-  // img.forEach(a => a.addEventListener("mouseout", hoverOut));
-  //
-  // function hoverIn(e) {
-  //   console.log(e);
-  // }
-  // function hoverOut(e) {
-  //   console.log("I am out");
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* TRENDING MOVIE API CALL  */
-
-  // var myData;
-  // call ();
-  // function call () {
-  // var xhr = new XMLHttpRequest();
-  // xhr.open("GET", "https://api.themoviedb.org/3/trending/movie/day?api_key=34ecbb288e9e94b508722abfc2597766");
-  // xhr.onload = function(){
-  //   myData = JSON.parse(xhr.responseText);
-  //   console.log(myData);
-  //   }
-  // xhr.send();
-  // }
-
+     }
 
 
  });

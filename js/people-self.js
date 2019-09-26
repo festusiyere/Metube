@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", (e) => {
   var personId = sessionStorage.getItem('personId');
-  console.log(personId);
 
   getPersonById();
   getPersonDetails();
@@ -74,6 +73,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
           </div>
         </div>
         `;
+
         getPersonImage();
         let thisDiv = document.querySelector(".movie-det");
         thisDiv.innerHTML = html;
@@ -108,6 +108,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
    }).join(" ");
    let me = document.querySelector('.mt7b');
    me.innerHTML = html;
+   $(".mt7ba").lightGallery();
+
    })
    .catch((err) => {
      let thisDiv = document.querySelector(".mt7b");
@@ -150,17 +152,5 @@ document.addEventListener("DOMContentLoaded", (e) => {
         thisDiv.innerHTML = customError;
       });
   }
-  /* TRENDING MOVIE API CALL  */
 
-  // var myData;
-  // call ();
-  // function call () {
-  // var xhr = new XMLHttpRequest();
-  // xhr.open("GET", "https://api.themoviedb.org/3/trending/movie/day?api_key=34ecbb288e9e94b508722abfc2597766");
-  // xhr.onload = function(){
-  //   myData = JSON.parse(xhr.responseText);
-  //   console.log(myData);
-  //   }
-  // xhr.send();
-  // }
  });
