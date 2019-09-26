@@ -811,9 +811,7 @@ color: orange;
 		flex-direction: column;
 	}
 	.movie-title{
-		top: 55%;
-		left: 10%;
-		right: 10%;
+		display: none;
 	}
 	.people{
 		display: none;
@@ -962,4 +960,15 @@ color: orange;
 		border-radius: 5px;
 		margin: auto auto 0.8em auto;
 	}
+	.mt7ba{
+		height: unset;
+		width: 100%;
+		margin-right: 0rem;
+		margin-bottom: 1rem;
+	}
+	.mt7ba img{
+		height: 100%;
+		width: 100%;
+	}
+
 }

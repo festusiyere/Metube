@@ -249,6 +249,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
    }).join(" ");
    let me = document.querySelector('.mt7b');
    me.innerHTML = html;
+   $(".mt7ba").lightGallery();
+
    })
    .catch((err) => {
      let thisDiv = document.querySelector(".mt7b");
