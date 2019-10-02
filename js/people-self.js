@@ -139,6 +139,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         let thisDiv = document.querySelector(".movie-pic1");
         let thatDiv = document.querySelectorAll("#loaderq");
         thisDiv.innerHTML = html;
+        $(".moviecov").lightGallery();
       })
       .catch((err) => {
         let thisDiv = document.querySelector(".movie-pic1");

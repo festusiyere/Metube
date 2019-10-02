@@ -422,7 +422,7 @@ color: orange;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	background-color: var(--LightPurple);
+	/* background-color: var(--LightPurple); */
 	height: 100%;
 }
 .error img{
@@ -737,6 +737,48 @@ color: orange;
 }
 /* Safari 4.0 - 8.0 */
 .movie-card:hover .this-title{
+	color: #fff;
+}
+.result-header{
+	color: grey;
+	margin: 1rem 0rem;
+	font-size: 1.2rem;
+	width: 100%;
+}
+}
+.search-cards{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	flex-wrap: wrap;
+}
+.search-card{
+	border-radius: 3px;
+	margin-bottom: 1rem;
+	width: 7em;
+	background-color: var(--LightPurple);
+	overflow: hidden;
+	padding: 0.2rem;
+	transition: all 1s;
+	box-sizing: border-box;
+}
+.search-poster{
+	width: 100%;
+	overflow: hidden;
+}
+.search-poster img{
+	border-radius: 3px;
+	width: 100%;
+}
+.this-title{
+	color: #000;
+}
+.search-card:hover{
+	transform: scale(1.03);
+	background-color: #000;
+}
+/* Safari 4.0 - 8.0 */
+.search-card:hover .this-title{
 	color: #fff;
 }
 

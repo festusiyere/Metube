@@ -108,9 +108,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
         thisDiv.innerHTML = html;
       })
       .catch((err) => {
-        let thisDiv = document.querySelector(".movie-det");
+        let thisDiv = document.querySelector(".jj");
         let customError = `
-            <div class="movie-wrap">
+            <div class="">
               <div class="error">
                 <img src="img/error.png" class="" alt="">
               </div>
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
    .catch((err) => {
      let thisDiv = document.querySelector(".rc");
      let customError = `
-         <div class="mt7ba">
+         <div class="">
            <div class="error">
              <img src="img/error.png" class="" alt="">
            </div>

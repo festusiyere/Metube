@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
          </div>
      `;
     me.innerHTML = customError;
+    otherbutton.style.display = "none";
    });
   }
 

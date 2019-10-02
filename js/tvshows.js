@@ -76,12 +76,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
    .catch((err) => {
      let me = document.querySelector('.movie-cards');
      let customError = `
-         <div class="mtt1">
+         <div class="">
            <div class="error">
              <img src="img/error.png" class="" alt="">
            </div>
          </div>
      `;
+   otherbutton.style.display = "none";
+   otherbutton1.style.display = "none";
     me.innerHTML = customError;
    });
   }

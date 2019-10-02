@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 let topbar = document.querySelector(".top-bar");
 let topform = document.querySelector(".header-form");
-let topsearch = document.querySelector("#search-input");
+var topsearch = document.getElementById("search-input");
 let openform = document.querySelector("#openform");
 
 openform.addEventListener("click", (e) => {
@@ -22,6 +22,7 @@ function focus(e) {
 }
 topsearch.addEventListener("blur", (e) => {
   e.preventDefault();
+  topsearch.value = "";
   topbar.style.transform = "translateY(0)";
   topbar.style.transition = "All 1.2s";
   topform.style.transform = "translateY(-150px)";
@@ -228,33 +229,317 @@ function getPeople() {
     getMovies(searchText);
   });
 
+  topsearch.addEventListener("keypress", () => {
+    document.querySelector(".ppp").innerHTML = `
+    <div class="movie-result">
+      <div class="search-cards">
 
+      </div>
+    </div>
+    <div class="tv-result">
+      <div class="result-header">
+        TV RESULTS
+      </div>
+      <div class="search-cards">
+
+      </div>
+    </div>
+    <div class="people-result">
+      <div class="result-header">
+        PEOPLE RESULTS
+      </div>
+      <div class="search-cards">
+
+      </div>
+    </div>
+    `;
+    searchTv();
+    searchMovies();
+    searchPeople();
+  });
+
+  function me() {
+
+    console.log(topsearch.value);
+  }
+
+  topsearch.addEventListener("submit", () =>{
+    document.querySelector(".ppp").innerHTML = `
+    <div class="movie-result">
+      <div class="result-header">
+        MOVIE RESULTS
+      </div>
+      <div class="search-cards">
+
+      </div>
+    </div>
+    <div class="tv-result">
+      <div class="result-header">
+        TV RESULTS
+      </div>
+      <div class="search-cards">
+
+      </div>
+    </div>
+    <div class="people-result">
+      <div class="result-header">
+        PEOPLE RESULTS
+      </div>
+      <div class="search-cards">
+
+      </div>
+    </div>
+    `;
+    searchTv();
+    searchMovies();
+    searchPeople();
+  });
+
+
+
+  function searchMovies () {
+    if (this.value === "") {
+      return;
+    }
+    console.log(this);
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.themoviedb.org/3/search/movie?api_key=34ecbb288e9e94b508722abfc2597766&language=en-US&query="+topsearch.value+"&page=1&include_adult=false");
+  xhr.onprogress = function(e) {
+    let me = document.querySelector('.movie-result div.search-cards');
+    let loader = `
+      <div class="showmore" id="load">
+        <img src="img/loader3.gif" class="" alt="">
+      </div>
+    `;
+    me.innerHTML = loader;
+    };
+    xhr.onloadstart = function(e) {
+      let me = document.querySelector('.movie-result div.search-cards');
+      let loader = `
+        <div class="showmore" id="load">
+          <img src="img/loader3.gif" class="" alt="">
+        </div>
+      `;
+      me.innerHTML = loader;
+    };
+    xhr.onerror  = function(e) {
+      let me = document.querySelector('.movie-result div.search-cards');
+      let customError = `
+          <div class="">
+            <div class="error">
+              <img src="img/error.png" class="" alt="">
+            </div>
+          </div>
+      `;
+     me.innerHTML = customError;
+    };
+    xhr.onload = function(e){
+    myData = JSON.parse(xhr.responseText);
+    myData = myData.results;
+    let html = myData.map(film => {
+      let link = "https://image.tmdb.org/t/p/original";
+      let page = "movie-self.html";
+    return `
+          <div class="search-card">
+           <a href="${page}" onclick="tv('${film.id}','${page}')">
+             <div class="search-poster">
+               <img src="${link + film.poster_path}" class="" alt="">
+             </div>
+             <div class="this-title">
+               ${film.name || film.title}
+             </div>
+           </a>
+         </div>
+      `;
+  }).join(" ");
+      let result = `
+        <div class="result">
+          Search Result for <span>${topsearch.value}</span>
+        </div>
+
+      `;
+      let me = document.querySelector('.movie-result div.search-cards');
+      let load = document.querySelector('#load');
+      me.innerHTML = result + html;
+      if (JSON.parse(xhr.responseText).total_results === 0) {
+        me.innerHTML = `
+        <div class="result">
+          No Results found!
+        </div>
+        `;
+      }
+      if (load) {
+        load.parentNode.removeChild(load);
+      }
+    }
+  xhr.send();
+  }
+
+
+  function searchTv () {
+    if (this.value === "") {
+      return;
+    }
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.themoviedb.org/3/search/tv?api_key=34ecbb288e9e94b508722abfc2597766&language=en-US&query="+topsearch.value+"&page=1&include_adult=false");
+  xhr.onprogress = function(e) {
+    let me = document.querySelector('.tv-result div.search-cards');
+    let loader = `
+      <div class="showmore" id="load">
+        <img src="img/loader3.gif" class="" alt="">
+      </div>
+    `;
+    me.innerHTML = loader;
+    };
+    xhr.onloadstart = function(e) {
+      let me = document.querySelector('.tv-result div.search-cards');
+      let loader = `
+        <div class="showmore" id="load">
+          <img src="img/loader3.gif" class="" alt="">
+        </div>
+      `;
+      me.innerHTML = loader;
+    };
+    xhr.onerror  = function(e) {
+      let me = document.querySelector('.tv-result div.search-cards');
+      let customError = `
+          <div class="">
+            <div class="error">
+              <img src="img/error.png" class="" alt="">
+            </div>
+          </div>
+      `;
+     me.innerHTML = customError;
+    };
+    xhr.onload = function(e){
+    myData = JSON.parse(xhr.responseText);
+    myData = myData.results;
+    console.log(myData);
+    if (myData.results === " ") {
+      return;
+    }
+    let html = myData.map(film => {
+      let link = "https://image.tmdb.org/t/p/original";
+      let page = "tv-self.html";
+    return `
+        <div class="search-cards">
+          <div class="search-card">
+           <a href="${page}" onclick="tv('${film.id}','${page}')">
+             <div class="search-poster">
+               <img src="${link + film.poster_path}" class="" alt="">
+             </div>
+             <div class="this-title">
+               ${film.name || film.title}
+             </div>
+           </a>
+         </div>
+        </div>
+      `;
+  }).join(" ");
+      let result = `
+        <div class="result">
+          Search Result for <span>${topsearch.value}</span>
+        </div>
+
+      `;
+      let me = document.querySelector('.tv-result div.search-cards');
+      let load = document.querySelector('#load');
+      me.innerHTML = result + html;
+      if (JSON.parse(xhr.responseText).total_results === 0) {
+        me.innerHTML = `
+        <div class="result">
+          No Results found!
+        </div>
+        `;
+      }
+      if (load) {
+        load.parentNode.removeChild(load);
+      }
+    }
+  xhr.send();
+  }
+
+
+  function searchPeople () {
+    if (this.value === "") {
+      return;
+    }
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.themoviedb.org/3/search/person?api_key=34ecbb288e9e94b508722abfc2597766&query="+topsearch.value+"&page=1&include_adult=false");
+  xhr.onprogress = function(e) {
+    let me = document.querySelector('.people-result div.search-cards');
+    let loader = `
+      <div class="showmore" id="load">
+        <img src="img/loader3.gif" class="" alt="">
+      </div>
+    `;
+    me.innerHTML = loader;
+    };
+    xhr.onloadstart = function(e) {
+      let me = document.querySelector('.people-result div.search-cards');
+      let loader = `
+        <div class="showmore" id="load">
+          <img src="img/loader3.gif" class="" alt="">
+        </div>
+      `;
+      me.innerHTML = loader;
+    };
+    xhr.onerror  = function(e) {
+      let me = document.querySelector('.people-result div.search-cards');
+      let customError = `
+          <div class="">
+            <div class="error">
+              <img src="img/error.png" class="" alt="">
+            </div>
+          </div>
+      `;
+     me.innerHTML = customError;
+    };
+    xhr.onload = function(e){
+    myData = JSON.parse(xhr.responseText);
+    myData = myData.results;
+    if (myData.results === " ") {
+      return;
+    }
+    let html = myData.map(film => {
+      let link = "https://image.tmdb.org/t/p/original";
+      let page = "people-self.html";
+    return `
+        <div class="search-cards">
+          <div class="search-card">
+           <a href="${page}" onclick="people('${film.id}','${page}')">
+             <div class="search-poster">
+               <img src="${link + film.poster_path}" class="" alt="">
+             </div>
+             <div class="this-title">
+               ${film.name || film.title}
+             </div>
+           </a>
+         </div>
+        </div>
+      `;
+  }).join(" ");
+      let result = `
+        <div class="result">
+          Search Result for <span>${topsearch.value}</span>
+        </div>
+
+      `;
+      let me = document.querySelector('.people-result div.search-cards');
+      let load = document.querySelector('#load');
+      me.innerHTML = result + html;
+      if (JSON.parse(xhr.responseText).total_results === 0) {
+        me.innerHTML = `
+        <div class="result">
+          No Results found!
+        </div>
+        `;
+      }
+      if (load) {
+        load.parentNode.removeChild(load);
+      }
+    }
+  xhr.send();
+  }
 
 });
-
-function getMovies(searchText) {
-  axios.get('https://api.themoviedb.org/3/search/movie?api_key=34ecbb288e9e94b508722abfc2597766&language=en-US&query='+searchText+'&include_adult=false')
-    .then((response) => {
-      // console.log('https://api.themoviedb.org/3/search/movie?api_key=34ecbb288e9e94b508722abfc2597766&language=en-US&query'+searchText+'&page=1&include_adult=false');
-      // console.log(response);
-      // let movies = response.data.Search;
-      // console.log(movies);
-      // let output = '';
-    //   $.each(movies, (index, movie) => {
-    //     output += `
-    //       <div class="col-md-3 mb-md-3">
-    //         <div class="rounded text-center">
-    //           <img src="${movie.Poster}">
-    //           <h5>${movie.Title}</h5>
-    //           <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary mb-md-3 mb-sm-3" href="#">Movie Details</a>
-    //         </div>
-    //       </div>
-    //     `;
-    //   });
-    //
-    //   $('#movies').html(output);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}

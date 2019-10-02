@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
          </div>
      `;
     me.innerHTML = customError;
+    otherbutton.style.display = "none";
    });
   }
 
@@ -119,6 +120,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
          </div>
      `;
      me.innerHTML = customError;
+     otherbutton.style.display = "none";
    });
   }
 
@@ -149,6 +151,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
           </div>
       `;
      me.innerHTML = customError;
+
     };
     xhr.onloadstart = function(e) {
       let me = document.querySelector('.movie-cards');
@@ -308,7 +311,6 @@ xhr.onprogress = function(e) {
   };
   xhr.onloadstart = function(e) {
     otherbutton.style.display = "flex";
-    console.log(e);
     document.querySelector('.trending').style.display = "none";
     let me = document.querySelector('.movie-cards');
     let loader = `
@@ -332,7 +334,6 @@ xhr.onprogress = function(e) {
   xhr.onload = function(e){
   myData = JSON.parse(xhr.responseText);
   myData = myData.results;
-  console.log(e);
   let html = myData.map(film => {
     let link = "https://image.tmdb.org/t/p/original";
     let page = "movie-self.html";
@@ -366,7 +367,6 @@ xhr.onprogress = function(e) {
       `;
     }
     if (load) {
-      load.innerHTML = "Heyyy";
       load.parentNode.removeChild(load);
     }
   }
