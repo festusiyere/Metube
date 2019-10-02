@@ -232,6 +232,10 @@ function getPeople() {
   topsearch.addEventListener("keypress", () => {
     document.querySelector(".ppp").innerHTML = `
     <div class="movie-result">
+      <div class="result-header">
+        MOVIE RESULTS
+      </div>
+
       <div class="search-cards">
 
       </div>
@@ -258,17 +262,13 @@ function getPeople() {
     searchPeople();
   });
 
-  function me() {
-
-    console.log(topsearch.value);
-  }
-
-  topsearch.addEventListener("submit", () =>{
+  topsearch.addEventListener("submit", () => {
     document.querySelector(".ppp").innerHTML = `
     <div class="movie-result">
       <div class="result-header">
         MOVIE RESULTS
       </div>
+
       <div class="search-cards">
 
       </div>
@@ -294,8 +294,6 @@ function getPeople() {
     searchMovies();
     searchPeople();
   });
-
-
 
   function searchMovies () {
     if (this.value === "") {
@@ -359,7 +357,7 @@ function getPeople() {
 
       `;
       let me = document.querySelector('.movie-result div.search-cards');
-      let load = document.querySelector('#load');
+      let load = me.querySelector('#load');
       me.innerHTML = result + html;
       if (JSON.parse(xhr.responseText).total_results === 0) {
         me.innerHTML = `
@@ -422,7 +420,6 @@ function getPeople() {
       let link = "https://image.tmdb.org/t/p/original";
       let page = "tv-self.html";
     return `
-        <div class="search-cards">
           <div class="search-card">
            <a href="${page}" onclick="tv('${film.id}','${page}')">
              <div class="search-poster">
@@ -433,7 +430,6 @@ function getPeople() {
              </div>
            </a>
          </div>
-        </div>
       `;
   }).join(" ");
       let result = `
@@ -443,7 +439,7 @@ function getPeople() {
 
       `;
       let me = document.querySelector('.tv-result div.search-cards');
-      let load = document.querySelector('#load');
+      let load = me.querySelector('#load');
       me.innerHTML = result + html;
       if (JSON.parse(xhr.responseText).total_results === 0) {
         me.innerHTML = `
@@ -526,7 +522,7 @@ function getPeople() {
 
       `;
       let me = document.querySelector('.people-result div.search-cards');
-      let load = document.querySelector('#load');
+      let load = me.querySelector('#load');
       me.innerHTML = result + html;
       if (JSON.parse(xhr.responseText).total_results === 0) {
         me.innerHTML = `

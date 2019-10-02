@@ -746,7 +746,7 @@ color: orange;
 	width: 100%;
 }
 }
-.search-cards{
+.search-cards, .search-cards{
 	display: flex;
 	justify-content: space-around;
 	text-align: center;
@@ -780,6 +780,12 @@ color: orange;
 /* Safari 4.0 - 8.0 */
 .search-card:hover .this-title{
 	color: #fff;
+}
+.search-cards, .search-cards{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	flex-wrap: wrap;
 }
 
 .open-nav{

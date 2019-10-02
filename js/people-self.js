@@ -30,20 +30,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
         let html = `
         <div class="mt">
           <div class="mt1">
-            ${movies.name}
+            ${movies.name || 'N/A'}
           </div>
           <div class="mt2">
             <div class="mt2a">
               Date of Birth:
-              <span>${movies.birthday}</span>
+              <span>${movies.birthday || 'N/A'}</span>
             </div>
             <div class="mt2a">
               Place of Birth:
-              <span>${movies.place_of_birth}</span>
+              <span>${movies.place_of_birth || 'N/A'}</span>
             </div>
             <div class="mt2a">
               Role:
-              <span>${movies.known_for_department}</span>
+              <span>${movies.known_for_department || 'N/A'}</span>
             </div>
             <div class="mt2a">
               Aliases:`;
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
               Biography
             </div>
             <div class="mt6b">
-              ${movies.biography}
+              ${movies.biography || 'N/A'}
             </div>
           </div>
           <div class="mt7">
